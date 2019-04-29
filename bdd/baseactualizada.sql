@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `basetransporte` /*!40100 DEFAULT CHARACTER SET u
 USE `basetransporte`;
 -- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
 --
--- Host: localhost    Database: basetransporte
+-- Host: 127.0.0.1    Database: basetransporte
 -- ------------------------------------------------------
 -- Server version	8.0.13
 
@@ -225,7 +225,7 @@ CREATE TABLE `rol` (
   `idrol` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idrol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,6 +234,7 @@ CREATE TABLE `rol` (
 
 LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
+INSERT INTO `rol` VALUES (1,'Administrador'),(2,'vendedor'),(3,'Cliente');
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,12 +309,11 @@ CREATE TABLE `usuario` (
   `idusuario` int(11) NOT NULL AUTO_INCREMENT,
   `nusuario` varchar(45) DEFAULT NULL,
   `contraseña` varchar(64) DEFAULT NULL,
-  `rol` varchar(45) DEFAULT NULL,
   `rol_idrol` int(11) NOT NULL,
   PRIMARY KEY (`idusuario`,`rol_idrol`),
   KEY `fk_usuario_rol1_idx` (`rol_idrol`),
   CONSTRAINT `fk_usuario_rol1` FOREIGN KEY (`rol_idrol`) REFERENCES `rol` (`idrol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,6 +322,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'edison','d24b6eb8c2b7db49675146a8cfa7d142',1),(2,'fernando','757ac642473f745ededa5f8c58ac463d',2);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,4 +371,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-25 23:52:40
+-- Dump completed on 2019-04-28 23:14:30
