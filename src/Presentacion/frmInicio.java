@@ -5,17 +5,25 @@
  */
 package Presentacion;
 
+import Datos.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author eddgt
  */
 public class frmInicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmInicio
-     */
     public frmInicio() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,22 +35,181 @@ public class frmInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelImage2 = new elaprendiz.gui.panel.PanelImage();
+        panelCurves1 = new elaprendiz.gui.panel.PanelCurves();
+        panelImage1 = new elaprendiz.gui.panel.PanelImage();
+        labelHeader1 = new elaprendiz.gui.label.LabelHeader();
+        labelRect1 = new elaprendiz.gui.label.LabelRect();
+        labelRect2 = new elaprendiz.gui.label.LabelRect();
+        clockDigital1 = new elaprendiz.gui.varios.ClockDigital();
+        txtUsuario = new elaprendiz.gui.textField.TextFieldRectIcon();
+        txtPass = new elaprendiz.gui.passwordField.PasswordFieldRectIcon();
+        buttonIcon1 = new elaprendiz.gui.button.ButtonIcon();
+        buttonAeroRight1 = new elaprendiz.gui.button.ButtonAeroRight();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/fondoazulceleste.jpg"))); // NOI18N
+
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/nuevologo.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 42, Short.MAX_VALUE)
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 45, Short.MAX_VALUE)
+        );
+
+        labelHeader1.setText("Bienvenidos al Terminal Terreste del Cielo ");
+
+        labelRect1.setText("USUARIO");
+
+        labelRect2.setText("CONTRASEÑA");
+
+        txtUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/user.png"))); // NOI18N
+
+        txtPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/predeterminado.png"))); // NOI18N
+
+        buttonIcon1.setText("buttonIcon1");
+        buttonIcon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonIcon1ActionPerformed(evt);
+            }
+        });
+
+        buttonAeroRight1.setText("buttonAeroRight1");
+        buttonAeroRight1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAeroRight1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelImage2Layout = new javax.swing.GroupLayout(panelImage2);
+        panelImage2.setLayout(panelImage2Layout);
+        panelImage2Layout.setHorizontalGroup(
+            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelCurves1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage2Layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(labelRect1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage2Layout.createSequentialGroup()
+                        .addComponent(labelHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage2Layout.createSequentialGroup()
+                        .addComponent(labelRect2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(clockDigital1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
+            .addGroup(panelImage2Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelImage2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonAeroRight1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
+        );
+
+        panelImage2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {labelRect1, labelRect2});
+
+        panelImage2Layout.setVerticalGroup(
+            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage2Layout.createSequentialGroup()
+                .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelImage2Layout.createSequentialGroup()
+                        .addComponent(labelHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelRect1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelRect2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clockDigital1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonAeroRight1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(panelCurves1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIcon1ActionPerformed
+        String usu = txtUsuario.getText();
+        String pas = new String(txtPass.getPassword());
+        acceder(usu, pas);
+    }//GEN-LAST:event_buttonIcon1ActionPerformed
+    Conexion cc = new Conexion();
+
+    private void buttonAeroRight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAeroRight1ActionPerformed
+        try {
+            Connection con = null;
+            con = cc.miConexion();
+            PreparedStatement ps;
+            ResultSet res;
+            ps = con.prepareStatement("select* from usuario ");
+            res = ps.executeQuery();
+            if (res.next()) {
+                JOptionPane.showMessageDialog(null, res.getString("nusuario"));
+
+            } else {
+                JOptionPane.showMessageDialog(null, " no hay nada ");
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_buttonAeroRight1ActionPerformed
+
+//void acceder(String usuario, String pass)
+//    {
+//        String cap="";
+//       String sql="SELECT * FROM usuario WHERE nusuario='"+usuario+"' and contraseña=MD5('"+pass+"')";
+//        try {
+//            Statement st = cn.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            while(rs.next())
+//            {
+//                cap=rs.getString("nusuario");
+//            }
+//
+//        } catch (SQLException ex) {
+//            //Logger.getLogger(IngresoSistema.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//       
+//        }
     /**
      * @param args the command line arguments
      */
@@ -79,5 +246,16 @@ public class frmInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private elaprendiz.gui.button.ButtonAeroRight buttonAeroRight1;
+    private elaprendiz.gui.button.ButtonIcon buttonIcon1;
+    private elaprendiz.gui.varios.ClockDigital clockDigital1;
+    private elaprendiz.gui.label.LabelHeader labelHeader1;
+    private elaprendiz.gui.label.LabelRect labelRect1;
+    private elaprendiz.gui.label.LabelRect labelRect2;
+    private elaprendiz.gui.panel.PanelCurves panelCurves1;
+    private elaprendiz.gui.panel.PanelImage panelImage1;
+    private elaprendiz.gui.panel.PanelImage panelImage2;
+    private elaprendiz.gui.passwordField.PasswordFieldRectIcon txtPass;
+    private elaprendiz.gui.textField.TextFieldRectIcon txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

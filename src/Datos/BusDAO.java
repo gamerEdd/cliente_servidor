@@ -1,11 +1,8 @@
 package Datos;
 
 
-import Contratos.IBusDAO;
-import Entidad.Bus;
-import Entidad.Categoria;
-import Entidad.TerminalDestino;
-import Entidad.TerminalOrigen;
+import Contratos.*;
+import Entidad.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
