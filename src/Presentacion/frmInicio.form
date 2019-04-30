@@ -159,6 +159,7 @@
         </Component>
         <Component class="elaprendiz.gui.textField.TextFieldRectIcon" name="txtUsuario">
           <Properties>
+            <Property name="text" type="java.lang.String" value="usuario"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/user.png"/>
             </Property>
@@ -166,6 +167,7 @@
         </Component>
         <Component class="elaprendiz.gui.passwordField.PasswordFieldRectIcon" name="txtPass">
           <Properties>
+            <Property name="text" type="java.lang.String" value="usuario"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/predeterminado.png"/>
             </Property>

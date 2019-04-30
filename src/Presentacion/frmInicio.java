@@ -6,6 +6,9 @@
 package Presentacion;
 
 import Datos.Conexion;
+import Datos.UsuariosDAO;
+import Entidad.Usuarios;
+import Pruebas.Hash;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -70,8 +73,10 @@ public class frmInicio extends javax.swing.JFrame {
 
         labelRect2.setText("CONTRASEÑA");
 
+        txtUsuario.setText("usuario");
         txtUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/user.png"))); // NOI18N
 
+        txtPass.setText("usuario");
         txtPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/predeterminado.png"))); // NOI18N
 
         buttonIcon1.setText("buttonIcon1");
@@ -167,9 +172,35 @@ public class frmInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIcon1ActionPerformed
-        String usu = txtUsuario.getText();
-        String pas = new String(txtPass.getPassword());
-        acceder(usu, pas);
+       UsuariosDAO modSql = new UsuariosDAO ();
+        Usuarios mod = new Usuarios();
+        
+        String pass = new String(txtPass.getPassword());
+        
+        if (!txtUsuario.getText().equals("") && !pass.equals("")) {
+            
+            String nuevoPass = Hash.md5(pass);
+            
+            mod.setNombreusuario(txtUsuario.getText());
+            mod.setPass(nuevoPass);
+            
+           try { if (modSql.login(mod)) {
+                   
+                   
+                   
+                   mdiMenuPrincipal frmMenu = new mdiMenuPrincipal(mod);
+                   frmMenu.setVisible(true);
+                   
+               } else {
+                   JOptionPane.showMessageDialog(null, "Datos incorrectos");
+                   
+               }
+           } catch (SQLException ex) {
+               Logger.getLogger(frmInicio.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe ingresar sus datos");
+        }
     }//GEN-LAST:event_buttonIcon1ActionPerformed
     Conexion cc = new Conexion();
 
