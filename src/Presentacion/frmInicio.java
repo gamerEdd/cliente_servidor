@@ -216,7 +216,7 @@ UsuariosDAO modSql = new UsuariosDAO();
 //                Inicio.frmLog = null;
 //                this.dispose();
                 
-                frmprueba frmMenu = new frmprueba(mod);
+                mdiMenuPrincipal frmMenu = new mdiMenuPrincipal(mod);
                 frmMenu.setVisible(true);
                 
             } else {
