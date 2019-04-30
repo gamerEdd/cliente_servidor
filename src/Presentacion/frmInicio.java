@@ -170,9 +170,37 @@ public class frmInicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+ Conexion cc = new Conexion();
+    Connection cn = cc.miConexion();
+    
+UsuariosDAO modSql = new UsuariosDAO();
+  Usuarios mod = new Usuarios();
+    public void acceder(String usuario, String pass) {
+       mod.setNombreusuario(usuario);
+       mod.setPass(pass);
 
+        String sql = "SELECT * FROM usuario WHERE nusuario='" + usuario + "' and contraseña=md5('" + pass + "')";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.first()) {
+                JOptionPane.showMessageDialog(null, "Bienvenido" + " " + usuario);
+                frmprueba mdi = new frmprueba(mod);
+                mdi.setVisible(true);
+       
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos Erroneos");
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("error");
+        }
+
+    }
     private void buttonIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIcon1ActionPerformed
-       UsuariosDAO modSql = new UsuariosDAO ();
+     UsuariosDAO modSql = new UsuariosDAO();
         Usuarios mod = new Usuarios();
         
         String pass = new String(txtPass.getPassword());
@@ -184,25 +212,22 @@ public class frmInicio extends javax.swing.JFrame {
             mod.setNombreusuario(txtUsuario.getText());
             mod.setPass(nuevoPass);
             
-           try { if (modSql.login(mod)) {
-                   
-                   
-                   
-                   mdiMenuPrincipal frmMenu = new mdiMenuPrincipal(mod);
-                   frmMenu.setVisible(true);
-                   
-               } else {
-                   JOptionPane.showMessageDialog(null, "Datos incorrectos");
-                   
-               }
-           } catch (SQLException ex) {
-               Logger.getLogger(frmInicio.class.getName()).log(Level.SEVERE, null, ex);
-           }
+            if (modSql.login(mod)) {
+//                Inicio.frmLog = null;
+//                this.dispose();
+                
+                frmprueba frmMenu = new frmprueba(mod);
+                frmMenu.setVisible(true);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar sus datos");
         }
     }//GEN-LAST:event_buttonIcon1ActionPerformed
-    Conexion cc = new Conexion();
+
 
     private void buttonAeroRight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAeroRight1ActionPerformed
         try {
