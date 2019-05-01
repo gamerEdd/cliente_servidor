@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Entidad.Usuarios;
+import javax.swing.JPanel;
 
 /**
  *
@@ -15,6 +16,7 @@ public class mdiMenuPrincipal extends javax.swing.JFrame {
 
   Usuarios mod;
     public mdiMenuPrincipal() {
+
         initComponents();
     }
 public mdiMenuPrincipal(Usuarios mod){
@@ -27,7 +29,7 @@ public mdiMenuPrincipal(Usuarios mod){
    */
    if(mod.getIdrol()==1){
        
-   }else if (mod.getIdrol()==2){
+   }else if (mod.getIdrol()==3){
        menuAdmin.setVisible(false);
    }
    
@@ -44,18 +46,58 @@ public mdiMenuPrincipal(Usuarios mod){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
+        destop1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        menuAdmin = new javax.swing.JMenu();
         menuUser = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        menuAdmin = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        menuAdmin.setText("Administrador");
-        menuBar.add(menuAdmin);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         menuUser.setText("Usuario");
+
+        jMenuItem2.setText("usuario");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menuUser.add(jMenuItem2);
+
         menuBar.add(menuUser);
+
+        menuAdmin.setText("Administrador");
+
+        jMenuItem1.setText("Menu Administrador");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuAdmin.add(jMenuItem1);
+
+        menuBar.add(menuAdmin);
+
+        jMenu1.setText("prueba");
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("menu");
+        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jRadioButtonMenuItem1);
+
+        menuBar.add(jMenu1);
 
         setJMenuBar(menuBar);
 
@@ -63,15 +105,42 @@ public mdiMenuPrincipal(Usuarios mod){
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(destop1, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(destop1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    destop1.removeAll();
+        frmIngresarUsuario frm = new frmIngresarUsuario();
+      destop1.add(frm);
+     frm.show();     
+      
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+      destop1.removeAll();
+        frmPrueba frm = new frmPrueba();
+      destop1.add(frm);
+     frm.show();
+    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+      destop1.removeAll();
+        frmPrincipal frm = new frmPrincipal();
+      destop1.add(frm);
+     frm.show();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -109,7 +178,11 @@ public mdiMenuPrincipal(Usuarios mod){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JDesktopPane destop1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JMenu menuAdmin;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuUser;
